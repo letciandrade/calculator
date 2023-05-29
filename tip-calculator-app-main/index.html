@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <style>
+    /* .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); } */
+
+
+  :root{
+ --StrongCyan:hsl(172, 67%, 45%);
+ --VeryDarkCyan:hsl(183, 100%, 15%);
+ --DarkGrayishCyan: hsl(186, 14%, 43%);
+ --GrayishCyan: hsl(184, 14%, 56%);
+ --LightGrayishCyan: hsl(185, 41%, 84%);
+ --VeryLightGrayishCyan: hsl(189, 41%, 97%);
+ --White: hsl(0, 0%, 100%);
+}
+
+@import url(https://fonts.google.com/specimen/Space+Mono);
+
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    button{
+    border: none;
+    cursor: pointer;
+  }
+
+  input{
+    border: none;
+    cursor: pointer;
+    background-color: var(--VeryLightGrayishCyan);
+    
+  }
+
+    main{
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background-color:  var(--LightGrayishCyan);
+    }
+
+    .container{
+    display: flex;
+    padding: 0.4rem;
+    flex-direction: row;
+    border-radius: 0.4rem;
+    height: 16rem;
+    width: 30rem;
+    background-color: var(--White);
+  
+   
+    /* height: 50vh; */
+  
+    
+    }
+
+    .caixaUm{
+      display: flex;
+      flex-direction: column;
+      width: 20rem;
+      background-color: var(--White);
+      border-radius: 0.4rem;
+      padding: 0.8rem;
+    }
+
+    .billTittle, .selectTip, .peoplesTittle{
+     font-family: 'SpaceMono';
+     color: var(--DarkGrayishCyan);
+     padding: 0.9rem;
+     font-size: 0.5rem ;
+    }
+
+   
+
+    .titulo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      padding: 2rem;
+      
+      color: var(--DarkGrayishCyan);
+      font-family: 'space-mono',sans-serif;
+      font-weight:700;
+    }
+
+  #bill-input{
+    background-image: url(./images/icon-dollar.svg);
+    background-repeat: no-repeat;
+    color: var(--VeryDarkCyan);
+    outline: none;
+    text-align: end;
+   
+  }
+
+  #peoples-input{
+    background-image: url(./images/icon-person.svg);
+    background-repeat: no-repeat;
+    color: var(--VeryDarkCyan);
+    outline: none;
+    text-align: end;
+  }
+
+
+
+#botao1, #botao2, #botao4, #botao5{
+  background-color: var(--VeryDarkCyan);
+  border-radius: 0.2rem;
+  color: var(--White);
+  font-size: 0.7rem;
+  width: 3rem;
+}
+
+#botao3{
+  background-color: var(--StrongCyan);
+  color: var(--VeryDarkCyan);
+  border-radius: 0.2rem;
+  font-size: 0.7rem;
+  width: 3rem;
+}
+
+#customButton{
+  background-color: var(--VeryLightGrayishCyan);
+  border-radius: 0.2rem;
+  color: var(--DarkGrayishCyan);
+ font-size: 0.7rem;
+  
+}
+
+.selectTip-botoes{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+
+    .caixaDois{
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      background-color: var(--VeryDarkCyan);
+      border-radius: 0.4rem;
+      padding: 0.8rem;
+      height: 13.2rem;
+      width: 20rem;
+      margin-top: 0.7rem;
+      margin-right: 0.3rem;
+      
+    }
+
+
+
+    .tipAmount-tittle, .totalTittle{
+      color: var(--White);
+    }
+
+    .amount-person, .total-person{
+      color: var(--GrayishCyan);
+    }
+
+    .tipAmount-Div{
+    padding: 0.8rem;
+    }
+
+    .total-Div{
+      padding: 0.8rem;
+    }
+
+    .div-result-amount, .total-result-Div{
+      display: flex;
+      justify-content: end;
+      color: var(--StrongCyan);
+      font-size: 2rem;
+      
+    }
+
+
+
+    #reset{
+      border: none;
+      cursor: pointer;
+      background-color: var(--StrongCyan);
+      color: var(--VeryDarkCyan);
+      font-size: 1.4rem;
+    }
+
+    .buttonReset-Div{
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      border-radius: 0.2rem;
+      justify-content: center;
+      background-color: var(--StrongCyan);
+      /* padding: 0.5rem; */
+    }
+
+
+  </style>
+</head>
+<body>
+  
+  <main>
+
+    
+<div>
+  
+      <article class="titulo">
+     <p>SPLI</p>
+     <p>TTER</p>
+      </article>
+       
+  
+  </section>
+  <section class="container">
+    <article class="caixaUm">
+      <p class="billTittle">Bill</p>
+      <div>
+        <input id="bill-input" type="number">
+      </div>
+  
+      <p class="selectTip">Select Tip %</p>
+      <div class="selectTip-botoes">
+        <div>
+          <button id="botao1" type="button">5%</button>
+          <button id="botao2" type="button">10%</button>
+          <button id="botao3" type="button">15%</button>
+        </div>
+        
+       <div>
+        <button id="botao4" type="button">25%</button>
+        <button id="botao5" type="button">50%</button>
+        <input id="customButton" value="Custom" type="button">
+       </div>
+      </div>
+  
+      <p class="peoplesTittle">Number of People</p>
+      <div class="peoplesDiv">
+        <input id="peoples-input" type="number" placeholder="">
+      </div>
+    </article>
+  
+  
+  
+  
+    <article class="caixaDois">
+      <div class="tipAmount-Div">
+      <p class="tipAmount-tittle">Tip Amount</p>
+      <p class="amount-person">/ person</p>
+      <div class="div-result-amount">
+        <p id="result"></p>
+      </div>
+      </div>
+  
+      <div class="total-Div">
+        <p class="totalTittle">Total</p>
+        <p class="total-person">/ person</p>
+        <div class="total-result-Div">
+          <p id="result"></p>
+        </div>
+      </div>
+  
+   <div  class="buttonReset-Div">
+    <button id="reset" type="button">Reset</button>
+   </div>
+  
+    </article>
+  
+  </section>
+</div>
+
+
+  </main>
+
+
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+  <script>
+     
+
+
+
+
+  </script>
+</body>
+</html>
